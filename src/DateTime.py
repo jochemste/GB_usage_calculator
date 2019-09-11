@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+from calendar import monthrange
 
 class DateTime():
     printAll: bool
@@ -15,11 +16,36 @@ class DateTime():
             print("Current date: " + currentDate)            
         return currentDate
 
+    def getDate_dayOnly(self):
+        currentDate = datetime.datetime.now().strftime("%d")
+        if self.printAll == True:
+            print("Current date: " + currentDate)
+        return currentDate
+
+    def getDate_monthOnly(self):
+        currentDate = datetime.datetime.now().strftime("%m")
+        if self.printAll == True:
+            print("Current date: " + currentDate)
+        return currentDate
+
+    def getDate_yearOnly(self):
+        currentDate = datetime.datetime.now().strftime("%Y")
+        if self.printAll == True:
+            print("Current date: " + currentDate)
+        return currentDate        
+
     def getTime(self):
         currentTime = datetime.datetime.now().strftime("%H:%M:%S")
         if self.printAll == True:
             print("Current time: " + currentTime)
         return currentTime
+
+    def getMonthRange(self):
+        month = int(self.getDate_monthOnly())
+        year = int(self.getDate_yearOnly())
+        range = monthrange(year, month)
+        return range[1]
+        
 
     ## @brief Returns true if a date is in the future, and false if it is not
     def date_in_future(self, date):
